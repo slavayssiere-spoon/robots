@@ -2,11 +2,11 @@
 // source: robots.proto
 
 /*
-Package grpc is a reverse proxy.
+Package robots is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package grpc
+package robots
 
 import (
 	"context"
@@ -15,7 +15,7 @@ import (
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
-	grpc_1 "gitlab.com/SpoonQIR/Cloud/services/groups.git/grpc"
+	"github.com/slavayssiere-spoon/groups"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/grpclog"
@@ -162,7 +162,7 @@ var (
 )
 
 func request_Robots_GetByGroup_0(ctx context.Context, marshaler runtime.Marshaler, client RobotsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq grpc_1.Group
+	var protoReq groups.Group
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -195,7 +195,7 @@ func request_Robots_GetByGroup_0(ctx context.Context, marshaler runtime.Marshale
 }
 
 func local_request_Robots_GetByGroup_0(ctx context.Context, marshaler runtime.Marshaler, server RobotsServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq grpc_1.Group
+	var protoReq groups.Group
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -467,7 +467,7 @@ func RegisterRobotsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Robots/GetAll", runtime.WithHTTPPathPattern("/v1/robots"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/robots.Robots/GetAll", runtime.WithHTTPPathPattern("/v1/robots"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -490,7 +490,7 @@ func RegisterRobotsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Robots/GetGraph", runtime.WithHTTPPathPattern("/v1/robots/graph"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/robots.Robots/GetGraph", runtime.WithHTTPPathPattern("/v1/robots/graph"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -513,7 +513,7 @@ func RegisterRobotsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Robots/Get", runtime.WithHTTPPathPattern("/v1/robots/id/{id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/robots.Robots/Get", runtime.WithHTTPPathPattern("/v1/robots/id/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -536,7 +536,7 @@ func RegisterRobotsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Robots/GetByGroup", runtime.WithHTTPPathPattern("/v1/robots/group/{id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/robots.Robots/GetByGroup", runtime.WithHTTPPathPattern("/v1/robots/group/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -559,7 +559,7 @@ func RegisterRobotsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Robots/GetSAFile", runtime.WithHTTPPathPattern("/v1/robots/id/{id}/sa-file"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/robots.Robots/GetSAFile", runtime.WithHTTPPathPattern("/v1/robots/id/{id}/sa-file"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -582,7 +582,7 @@ func RegisterRobotsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Robots/Add", runtime.WithHTTPPathPattern("/v1/robots"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/robots.Robots/Add", runtime.WithHTTPPathPattern("/v1/robots"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -605,7 +605,7 @@ func RegisterRobotsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Robots/Update", runtime.WithHTTPPathPattern("/v1/robots"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/robots.Robots/Update", runtime.WithHTTPPathPattern("/v1/robots"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -628,7 +628,7 @@ func RegisterRobotsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Robots/UpdateMacAddress", runtime.WithHTTPPathPattern("/v1/robots/id/{id}/mac/{mac}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/robots.Robots/UpdateMacAddress", runtime.WithHTTPPathPattern("/v1/robots/id/{id}/mac/{mac}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -690,7 +690,7 @@ func RegisterRobotsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Robots/GetAll", runtime.WithHTTPPathPattern("/v1/robots"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/robots.Robots/GetAll", runtime.WithHTTPPathPattern("/v1/robots"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -710,7 +710,7 @@ func RegisterRobotsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Robots/GetGraph", runtime.WithHTTPPathPattern("/v1/robots/graph"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/robots.Robots/GetGraph", runtime.WithHTTPPathPattern("/v1/robots/graph"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -730,7 +730,7 @@ func RegisterRobotsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Robots/Get", runtime.WithHTTPPathPattern("/v1/robots/id/{id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/robots.Robots/Get", runtime.WithHTTPPathPattern("/v1/robots/id/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -750,7 +750,7 @@ func RegisterRobotsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Robots/GetByGroup", runtime.WithHTTPPathPattern("/v1/robots/group/{id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/robots.Robots/GetByGroup", runtime.WithHTTPPathPattern("/v1/robots/group/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -770,7 +770,7 @@ func RegisterRobotsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Robots/GetSAFile", runtime.WithHTTPPathPattern("/v1/robots/id/{id}/sa-file"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/robots.Robots/GetSAFile", runtime.WithHTTPPathPattern("/v1/robots/id/{id}/sa-file"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -790,7 +790,7 @@ func RegisterRobotsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Robots/Add", runtime.WithHTTPPathPattern("/v1/robots"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/robots.Robots/Add", runtime.WithHTTPPathPattern("/v1/robots"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -810,7 +810,7 @@ func RegisterRobotsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Robots/Update", runtime.WithHTTPPathPattern("/v1/robots"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/robots.Robots/Update", runtime.WithHTTPPathPattern("/v1/robots"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -830,7 +830,7 @@ func RegisterRobotsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Robots/UpdateMacAddress", runtime.WithHTTPPathPattern("/v1/robots/id/{id}/mac/{mac}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/robots.Robots/UpdateMacAddress", runtime.WithHTTPPathPattern("/v1/robots/id/{id}/mac/{mac}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

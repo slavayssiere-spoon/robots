@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package grpc;
+package robots;
 
-option go_package = "gitlab.com/SpoonQIR/Cloud/services/robots.git/grpc;grpc";
+option go_package = "github.com/slavayssiere-spoon/robots";
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
@@ -83,7 +83,7 @@ message Robot {
 	string address = 4;
 	string mac = 5;
 	// @inject_tag: gorm:"-"
-	repeated grpc.Group groups = 6;
+	repeated groups.Group groups = 6;
 	// @inject_tag: gorm:"-"
 	repeated string paths = 7;
 	string name = 8;
@@ -108,7 +108,7 @@ service robots {
 		};
 	}
 
-	rpc GetGraph (google.protobuf.Empty) returns (grpc.Groups) {
+	rpc GetGraph (google.protobuf.Empty) returns (groups.Groups) {
 		option (google.api.http) = {
 			get: "/v1/robots/graph"
 		};
@@ -120,7 +120,7 @@ service robots {
 		};
 	}
 
-	rpc GetByGroup (grpc.Group) returns (Robots) {
+	rpc GetByGroup (groups.Group) returns (Robots) {
 		option (google.api.http) = {
 			get: "/v1/robots/group/{id}"
 		};

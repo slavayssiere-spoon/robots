@@ -2,12 +2,11 @@
 
 set -e
 
-GROUPS_PROJECT_ID="19810936"
-GROUPS_VERSION="develop"
+GROUPS_VERSION="master"
 
-curl -o proto/groups.proto --header "PRIVATE-TOKEN: $GITLAB_TOKEN" "https://gitlab.com/api/v4/projects/$GROUPS_PROJECT_ID/repository/files/proto%2Fgroups.proto/raw?ref=$GROUPS_VERSION"
+curl -o proto/groups.proto "https://raw.githubusercontent.com/slavayssiere-spoon/groups/$GROUPS_VERSION/proto/groups.proto"
 
-GEN_PATH="grpc"
+GEN_PATH="."
 GO_LIB_PATH=$(go env GOPATH)/src
 GOPATH=$(go env GOPATH)
 
