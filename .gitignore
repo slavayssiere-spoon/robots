@@ -1,0 +1,10 @@
+swagger/*.json
+proto/groups.proto
+groups
+robots
+google-protos
+cover.html
+cover.txt
+proto/google/api/*.proto
+proto/google/protobuf/*.proto
+robots.git
