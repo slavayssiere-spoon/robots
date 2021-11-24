@@ -1,4 +1,4 @@
-module github.com/slavayssiere-spoon/group
+module github.com/slavayssiere-spoon/robots
 
 go 1.17
 
