@@ -1,12 +1,17 @@
 import os
+import sys
 import grpc
 from flask import g
-from robots_pb2_grpc import robotsStub
-from robots_pb2 import Robot
 
 import opentracing
 from grpc_opentracing import open_tracing_client_interceptor
 from grpc_opentracing.grpcext import intercept_channel
+
+path = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(path)
+
+from robots_pb2_grpc import robotsStub
+from robots_pb2 import Robot
 
 class SvcRobots():
   def __init__(self, url):
