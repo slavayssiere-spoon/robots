@@ -1,7 +1,5 @@
 swagger/*.json
 proto/groups.proto
-groups
-robots
 google-protos
 cover.html
 cover.txt

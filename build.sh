@@ -2,6 +2,9 @@
 
 set -e
 
+python3 -m pip install grpcio
+python3 -m pip install grpcio-tools
+
 GROUPS_VERSION="master"
 
 curl -o proto/groups.proto "https://raw.githubusercontent.com/slavayssiere-spoon/groups/$GROUPS_VERSION/proto/groups.proto"
@@ -30,6 +33,27 @@ protoc \
         --grpc-gateway_out=logtostderr=true,paths=source_relative:$GEN_PATH \
         --openapiv2_out=logtostderr=true:$GEN_PATH \
         proto/robots.proto
+
+
+python3 -m grpc_tools.protoc \
+        -I proto \
+        -I $GOPATH/src/include \
+        --python_out=$GEN_PATH/robots \
+        $GOPATH/src/include/protoc-gen-openapiv2/options/annotations.proto
+
+python3 -m grpc_tools.protoc \
+        -I proto \
+        -I $GOPATH/src/include \
+        --python_out=$GEN_PATH/robots \
+        $GOPATH/src/include/protoc-gen-openapiv2/options/openapiv2.proto
+
+python3 -m grpc_tools.protoc \
+        -I proto \
+        -I $GOPATH/src/include \
+        --python_out=$GEN_PATH/robots \
+        --grpc_python_out=$GEN_PATH/robots \
+        proto/robots.proto
+
 
 protoc-go-inject-tag -input=./$GEN_PATH/robots.pb.go
 
