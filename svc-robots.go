@@ -176,3 +176,51 @@ func (s *RobotService) UpdateMacAddress(ctx context.Context, rbt *Robot) (*Robot
 	}
 	return nil, status.Errorf(codes.NotFound, "Robot not found")
 }
+
+func (s *RobotService) GetList(ctx context.Context) (*Robots, error) {
+	for i := 0; i <= 5; i++ {
+		md, ok := metadata.FromOutgoingContext(ctx)
+		if !ok {
+			logrus.Error("cannot get outgoing data")
+		}
+		logrus.WithFields(logrus.Fields{"jwt": md.Get("authorization")}).Debug("get robot")
+		if ctx == nil {
+			logrus.Error("error get robot, ctx is nil")
+		}
+		if md == nil {
+			logrus.Error("error get robot, md is nil")
+		}
+		if s.Robotssvc == nil {
+			logrus.Error("error get robot, s.Robotssvc is nil")
+			s.Robotreco <- true
+		}
+		grp, err := s.Robotssvc.GetAll(metadata.NewOutgoingContext(ctx, md), &Robots{})
+		logrus.WithFields(logrus.Fields{"ctx.err": ctx.Err(), "err": err}).Trace("error ctx get object")
+		if err != nil {
+			logrus.WithFields(logrus.Fields{"err": err}).Error("error get object")
+			errStatus, _ := status.FromError(err)
+			if errStatus.Code() == codes.Unavailable {
+				s.Robotreco <- true
+			} else if errStatus.Code() == codes.Canceled {
+				s.Robotreco <- true
+			} else if errStatus.Code() == codes.DeadlineExceeded {
+				s.Robotreco <- true
+			} else if errStatus.Code() == codes.Aborted {
+				s.Robotreco <- true
+			} else if errStatus.Code() == codes.Unauthenticated {
+				logrus.WithFields(logrus.Fields{"jwt": md.Get("authorization")}).Info("ws-identity not identified")
+				return nil, status.Error(codes.Unauthenticated, "unauthenticated")
+			} else if errStatus.Code() == codes.InvalidArgument {
+				return nil, status.Errorf(codes.InvalidArgument, "argument invalid %v", err)
+			} else if errStatus.Code() == codes.NotFound {
+				return nil, nil
+			}
+			// errStatus.Code() == codes.Internal = retry
+		} else if ctx.Err() != nil {
+			s.Robotreco <- true
+		} else {
+			return grp, nil
+		}
+	}
+	return nil, status.Errorf(codes.NotFound, "Robot not found")
+}
