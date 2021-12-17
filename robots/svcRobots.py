@@ -22,8 +22,8 @@ class SvcRobots():
     self.stub = robotsStub(channel)
     print("connected :-)")
 
-  def GetPaths(self, identity):
-    metadata = (('authorization', g.bearer),
+  def GetPaths(self, bearer, identity):
+    metadata = (('authorization', bearer),
             ('some-md-key', 'another value'))
     rbt = self.stub.Get(request=Robot(email=identity), metadata=metadata)
     print(rbt)
