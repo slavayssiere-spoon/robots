@@ -195,7 +195,7 @@ func (s *RobotService) GetList(ctx context.Context) (*Robots, error) {
 			s.Robotreco <- true
 		}
 		grp, err := s.Robotssvc.GetAll(metadata.NewOutgoingContext(ctx, md), &Robots{
-			Max: 1000,
+			Limit: 1000,
 		})
 		logrus.WithFields(logrus.Fields{"ctx.err": ctx.Err(), "err": err}).Trace("error ctx get object")
 		if err != nil {
