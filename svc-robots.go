@@ -194,7 +194,9 @@ func (s *RobotService) GetList(ctx context.Context) (*Robots, error) {
 			logrus.Error("error get robot, s.Robotssvc is nil")
 			s.Robotreco <- true
 		}
-		grp, err := s.Robotssvc.GetAll(metadata.NewOutgoingContext(ctx, md), &Robots{})
+		grp, err := s.Robotssvc.GetAll(metadata.NewOutgoingContext(ctx, md), &Robots{
+			Max: 1000,
+		})
 		logrus.WithFields(logrus.Fields{"ctx.err": ctx.Err(), "err": err}).Trace("error ctx get object")
 		if err != nil {
 			logrus.WithFields(logrus.Fields{"err": err}).Error("error get object")
