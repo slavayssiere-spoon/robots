@@ -89,6 +89,9 @@ message Robot {
 	repeated string paths = 7;
 	string name = 8;
 	string key = 9;
+	string directusUser = 10;
+	string directusPassword = 11;
+	string pubsubTopic = 12;
 }
 
 message Robots {
