@@ -6,3 +6,4 @@ cover.txt
 proto/google/api/*.proto
 proto/google/protobuf/*.proto
 robots.git
+proto/protoc-gen-openapiv2/**/*.proto

@@ -24,6 +24,10 @@ curl -o proto/google/protobuf/struct.proto "https://raw.githubusercontent.com/pr
 curl -o proto/google/protobuf/timestamp.proto "https://raw.githubusercontent.com/protocolbuffers/protobuf/master/src/google/protobuf/timestamp.proto"
 curl -o proto/google/protobuf/any.proto "https://raw.githubusercontent.com/protocolbuffers/protobuf/master/src/google/protobuf/any.proto"
 
+mkdir -p $GOPATH/src/include/protoc-gen-openapiv2/options
+curl -o $GOPATH/src/include/protoc-gen-openapiv2/options/annotations.proto "https://raw.githubusercontent.com/grpc-ecosystem/grpc-gateway/master/protoc-gen-openapiv2/options/annotations.proto"
+curl -o $GOPATH/src/include/protoc-gen-openapiv2/options/openapiv2.proto "https://raw.githubusercontent.com/grpc-ecosystem/grpc-gateway/master/protoc-gen-openapiv2/options/openapiv2.proto"
+
 echo "gen with protoc"
 protoc \
         -I proto \
