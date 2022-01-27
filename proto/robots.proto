@@ -105,6 +105,12 @@ message SaFile {
 	string content = 1;
 }
 
+message DirectusToken {
+	string access_token = 1;
+	int64 expires = 2;
+	string refresh_token = 3;
+}
+
 service robots {
 	rpc GetAll (Robots) returns (Robots) {
 		option (google.api.http) = {
@@ -121,6 +127,12 @@ service robots {
 	rpc Get (Robot) returns (Robot) {
 		option (google.api.http) = {
 			get: "/v1/robots/id/{id}"
+		};
+	}
+
+	rpc GetDirectusToken (Robot) returns (DirectusToken) {
+		option (google.api.http) = {
+			get: "/v1/robots/directustoken/{id}"
 		};
 	}
 

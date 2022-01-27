@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z$github.com/slavayssiere-spoon/robots\222A\217\004\022\201\001\n\021Spoon - Robots WS\"e\n\020Spoon Cloud Team\0221https://gitlab.com/SpoonQIR/Cloud/services/robots\032\036sebastien.lavayssiere@spoon.ai2\0050.0.1*\002\002\0012\020application/json:\020application/jsonRP\n\003403\022I\nGReturned when the user does not have permission to access the resource.R;\n\003404\0224\n*Returned when the resource does not exist.\022\006\n\004\232\002\001\007RW\n\003418\022P\n\rI\'m a teapot.\022?\n=\032;.grpc.gateway.examples.internal.proto.examplepb.NumericEnumZ#\n!\n\nApiKeyAuth\022\023\010\002\032\rAuthorization \002b\020\n\016\n\nApiKeyAuth\022\000rB\n\rlink for docs\0221https://gitlab.com/SpoonQIR/Cloud/services/robots',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0crobots.proto\x12\x06robots\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a\x0cgroups.proto\"\xdb\x01\n\x05Robot\x12\n\n\x02id\x18\x01 \x01(\x04\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0b\n\x03gps\x18\x03 \x01(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x04 \x01(\t\x12\x0b\n\x03mac\x18\x05 \x01(\t\x12\x1d\n\x06groups\x18\x06 \x03(\x0b\x32\r.groups.Group\x12\r\n\x05paths\x18\x07 \x03(\t\x12\x0c\n\x04name\x18\x08 \x01(\t\x12\x0b\n\x03key\x18\t \x01(\t\x12\x14\n\x0c\x64irectusUser\x18\n \x01(\t\x12\x18\n\x10\x64irectusPassword\x18\x0b \x01(\t\x12\x13\n\x0bpubsubTopic\x18\x0c \x01(\t\"Q\n\x06Robots\x12\x1b\n\x04list\x18\x01 \x03(\x0b\x32\r.robots.Robot\x12\r\n\x05limit\x18\x02 \x01(\x04\x12\x0e\n\x06offset\x18\x03 \x01(\x04\x12\x0b\n\x03max\x18\x04 \x01(\x04\"\x19\n\x06SaFile\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\t2\xc4\x04\n\x06robots\x12<\n\x06GetAll\x12\x0e.robots.Robots\x1a\x0e.robots.Robots\"\x12\x82\xd3\xe4\x93\x02\x0c\x12\n/v1/robots\x12L\n\x08GetGraph\x12\x16.google.protobuf.Empty\x1a\x0e.groups.Groups\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/robots/graph\x12?\n\x03Get\x12\r.robots.Robot\x1a\r.robots.Robot\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/v1/robots/id/{id}\x12J\n\nGetByGroup\x12\r.groups.Group\x1a\x0e.robots.Robots\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/v1/robots/group/{id}\x12N\n\tGetSAFile\x12\r.robots.Robot\x1a\x0e.robots.SaFile\"\"\x82\xd3\xe4\x93\x02\x1c\"\x1a/v1/robots/id/{id}/sa-file\x12:\n\x03\x41\x64\x64\x12\r.robots.Robot\x1a\r.robots.Robot\"\x15\x82\xd3\xe4\x93\x02\x0f\"\n/v1/robots:\x01*\x12=\n\x06Update\x12\r.robots.Robot\x1a\r.robots.Robot\"\x15\x82\xd3\xe4\x93\x02\x0f\x32\n/v1/robots:\x01*\x12V\n\x10UpdateMacAddress\x12\r.robots.Robot\x1a\r.robots.Robot\"$\x82\xd3\xe4\x93\x02\x1e\x1a\x1c/v1/robots/id/{id}/mac/{mac}B\xb9\x04Z$github.com/slavayssiere-spoon/robots\x92\x41\x8f\x04\x12\x81\x01\n\x11Spoon - Robots WS\"e\n\x10Spoon Cloud Team\x12\x31https://gitlab.com/SpoonQIR/Cloud/services/robots\x1a\x1esebastien.lavayssiere@spoon.ai2\x05\x30.0.1*\x02\x02\x01\x32\x10\x61pplication/json:\x10\x61pplication/jsonRP\n\x03\x34\x30\x33\x12I\nGReturned when the user does not have permission to access the resource.R;\n\x03\x34\x30\x34\x12\x34\n*Returned when the resource does not exist.\x12\x06\n\x04\x9a\x02\x01\x07RW\n\x03\x34\x31\x38\x12P\n\rI\'m a teapot.\x12?\n=\x1a;.grpc.gateway.examples.internal.proto.examplepb.NumericEnumZ#\n!\n\nApiKeyAuth\x12\x13\x08\x02\x1a\rAuthorization \x02\x62\x10\n\x0e\n\nApiKeyAuth\x12\x00rB\n\rlink for docs\x12\x31https://gitlab.com/SpoonQIR/Cloud/services/robotsb\x06proto3'
+  serialized_pb=b'\n\x0crobots.proto\x12\x06robots\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a\x0cgroups.proto\"\xdb\x01\n\x05Robot\x12\n\n\x02id\x18\x01 \x01(\x04\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0b\n\x03gps\x18\x03 \x01(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x04 \x01(\t\x12\x0b\n\x03mac\x18\x05 \x01(\t\x12\x1d\n\x06groups\x18\x06 \x03(\x0b\x32\r.groups.Group\x12\r\n\x05paths\x18\x07 \x03(\t\x12\x0c\n\x04name\x18\x08 \x01(\t\x12\x0b\n\x03key\x18\t \x01(\t\x12\x14\n\x0c\x64irectusUser\x18\n \x01(\t\x12\x18\n\x10\x64irectusPassword\x18\x0b \x01(\t\x12\x13\n\x0bpubsubTopic\x18\x0c \x01(\t\"Q\n\x06Robots\x12\x1b\n\x04list\x18\x01 \x03(\x0b\x32\r.robots.Robot\x12\r\n\x05limit\x18\x02 \x01(\x04\x12\x0e\n\x06offset\x18\x03 \x01(\x04\x12\x0b\n\x03max\x18\x04 \x01(\x04\"\x19\n\x06SaFile\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\t\"M\n\rDirectusToken\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x0f\n\x07\x65xpires\x18\x02 \x01(\x03\x12\x15\n\rrefresh_token\x18\x03 \x01(\t2\xa5\x05\n\x06robots\x12<\n\x06GetAll\x12\x0e.robots.Robots\x1a\x0e.robots.Robots\"\x12\x82\xd3\xe4\x93\x02\x0c\x12\n/v1/robots\x12L\n\x08GetGraph\x12\x16.google.protobuf.Empty\x1a\x0e.groups.Groups\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/robots/graph\x12?\n\x03Get\x12\r.robots.Robot\x1a\r.robots.Robot\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/v1/robots/id/{id}\x12_\n\x10GetDirectusToken\x12\r.robots.Robot\x1a\x15.robots.DirectusToken\"%\x82\xd3\xe4\x93\x02\x1f\x12\x1d/v1/robots/directustoken/{id}\x12J\n\nGetByGroup\x12\r.groups.Group\x1a\x0e.robots.Robots\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/v1/robots/group/{id}\x12N\n\tGetSAFile\x12\r.robots.Robot\x1a\x0e.robots.SaFile\"\"\x82\xd3\xe4\x93\x02\x1c\"\x1a/v1/robots/id/{id}/sa-file\x12:\n\x03\x41\x64\x64\x12\r.robots.Robot\x1a\r.robots.Robot\"\x15\x82\xd3\xe4\x93\x02\x0f\"\n/v1/robots:\x01*\x12=\n\x06Update\x12\r.robots.Robot\x1a\r.robots.Robot\"\x15\x82\xd3\xe4\x93\x02\x0f\x32\n/v1/robots:\x01*\x12V\n\x10UpdateMacAddress\x12\r.robots.Robot\x1a\r.robots.Robot\"$\x82\xd3\xe4\x93\x02\x1e\x1a\x1c/v1/robots/id/{id}/mac/{mac}B\xb9\x04Z$github.com/slavayssiere-spoon/robots\x92\x41\x8f\x04\x12\x81\x01\n\x11Spoon - Robots WS\"e\n\x10Spoon Cloud Team\x12\x31https://gitlab.com/SpoonQIR/Cloud/services/robots\x1a\x1esebastien.lavayssiere@spoon.ai2\x05\x30.0.1*\x02\x02\x01\x32\x10\x61pplication/json:\x10\x61pplication/jsonRP\n\x03\x34\x30\x33\x12I\nGReturned when the user does not have permission to access the resource.R;\n\x03\x34\x30\x34\x12\x34\n*Returned when the resource does not exist.\x12\x06\n\x04\x9a\x02\x01\x07RW\n\x03\x34\x31\x38\x12P\n\rI\'m a teapot.\x12?\n=\x1a;.grpc.gateway.examples.internal.proto.examplepb.NumericEnumZ#\n!\n\nApiKeyAuth\x12\x13\x08\x02\x1a\rAuthorization \x02\x62\x10\n\x0e\n\nApiKeyAuth\x12\x00rB\n\rlink for docs\x12\x31https://gitlab.com/SpoonQIR/Cloud/services/robotsb\x06proto3'
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,groups__pb2.DESCRIPTOR,])
 
@@ -223,11 +223,58 @@ _SAFILE = _descriptor.Descriptor(
   serialized_end=475,
 )
 
+
+_DIRECTUSTOKEN = _descriptor.Descriptor(
+  name='DirectusToken',
+  full_name='robots.DirectusToken',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='access_token', full_name='robots.DirectusToken.access_token', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='expires', full_name='robots.DirectusToken.expires', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='refresh_token', full_name='robots.DirectusToken.refresh_token', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=477,
+  serialized_end=554,
+)
+
 _ROBOT.fields_by_name['groups'].message_type = groups__pb2._GROUP
 _ROBOTS.fields_by_name['list'].message_type = _ROBOT
 DESCRIPTOR.message_types_by_name['Robot'] = _ROBOT
 DESCRIPTOR.message_types_by_name['Robots'] = _ROBOTS
 DESCRIPTOR.message_types_by_name['SaFile'] = _SAFILE
+DESCRIPTOR.message_types_by_name['DirectusToken'] = _DIRECTUSTOKEN
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Robot = _reflection.GeneratedProtocolMessageType('Robot', (_message.Message,), {
@@ -251,6 +298,13 @@ SaFile = _reflection.GeneratedProtocolMessageType('SaFile', (_message.Message,),
   })
 _sym_db.RegisterMessage(SaFile)
 
+DirectusToken = _reflection.GeneratedProtocolMessageType('DirectusToken', (_message.Message,), {
+  'DESCRIPTOR' : _DIRECTUSTOKEN,
+  '__module__' : 'robots_pb2'
+  # @@protoc_insertion_point(class_scope:robots.DirectusToken)
+  })
+_sym_db.RegisterMessage(DirectusToken)
+
 
 DESCRIPTOR._options = None
 
@@ -261,8 +315,8 @@ _ROBOTS = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=478,
-  serialized_end=1058,
+  serialized_start=557,
+  serialized_end=1234,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetAll',
@@ -295,9 +349,19 @@ _ROBOTS = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='GetDirectusToken',
+    full_name='robots.robots.GetDirectusToken',
+    index=3,
+    containing_service=None,
+    input_type=_ROBOT,
+    output_type=_DIRECTUSTOKEN,
+    serialized_options=b'\202\323\344\223\002\037\022\035/v1/robots/directustoken/{id}',
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='GetByGroup',
     full_name='robots.robots.GetByGroup',
-    index=3,
+    index=4,
     containing_service=None,
     input_type=groups__pb2._GROUP,
     output_type=_ROBOTS,
@@ -307,7 +371,7 @@ _ROBOTS = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetSAFile',
     full_name='robots.robots.GetSAFile',
-    index=4,
+    index=5,
     containing_service=None,
     input_type=_ROBOT,
     output_type=_SAFILE,
@@ -317,7 +381,7 @@ _ROBOTS = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Add',
     full_name='robots.robots.Add',
-    index=5,
+    index=6,
     containing_service=None,
     input_type=_ROBOT,
     output_type=_ROBOT,
@@ -327,7 +391,7 @@ _ROBOTS = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Update',
     full_name='robots.robots.Update',
-    index=6,
+    index=7,
     containing_service=None,
     input_type=_ROBOT,
     output_type=_ROBOT,
@@ -337,7 +401,7 @@ _ROBOTS = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='UpdateMacAddress',
     full_name='robots.robots.UpdateMacAddress',
-    index=7,
+    index=8,
     containing_service=None,
     input_type=_ROBOT,
     output_type=_ROBOT,
