@@ -712,14 +712,17 @@
       "type": "object",
       "properties": {
         "accessToken": {
-          "type": "string"
+          "type": "string",
+          "title": "@inject_tag: json:\"access_token\""
         },
         "expires": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "@inject_tag: json:\"expires\""
         },
         "refreshToken": {
-          "type": "string"
+          "type": "string",
+          "title": "@inject_tag: json:\"refresh_token\""
         }
       }
     },

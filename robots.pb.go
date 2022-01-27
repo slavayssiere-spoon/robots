@@ -286,9 +286,12 @@ type DirectusToken struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	AccessToken  string `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	Expires      int64  `protobuf:"varint,2,opt,name=expires,proto3" json:"expires,omitempty"`
-	RefreshToken string `protobuf:"bytes,3,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	// @inject_tag: json:"access_token"
+	AccessToken string `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token"`
+	// @inject_tag: json:"expires"
+	Expires int64 `protobuf:"varint,2,opt,name=expires,proto3" json:"expires"`
+	// @inject_tag: json:"refresh_token"
+	RefreshToken string `protobuf:"bytes,3,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token"`
 }
 
 func (x *DirectusToken) Reset() {
