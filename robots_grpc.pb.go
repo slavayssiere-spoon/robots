@@ -24,6 +24,7 @@ type RobotsClient interface {
 	GetGraph(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*groups.Groups, error)
 	Get(ctx context.Context, in *Robot, opts ...grpc.CallOption) (*Robot, error)
 	GetDirectusToken(ctx context.Context, in *Robot, opts ...grpc.CallOption) (*DirectusToken, error)
+	GetMyDirectusToken(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*DirectusToken, error)
 	GetByGroup(ctx context.Context, in *groups.Group, opts ...grpc.CallOption) (*Robots, error)
 	GetSAFile(ctx context.Context, in *Robot, opts ...grpc.CallOption) (*SaFile, error)
 	Add(ctx context.Context, in *Robot, opts ...grpc.CallOption) (*Robot, error)
@@ -69,6 +70,15 @@ func (c *robotsClient) Get(ctx context.Context, in *Robot, opts ...grpc.CallOpti
 func (c *robotsClient) GetDirectusToken(ctx context.Context, in *Robot, opts ...grpc.CallOption) (*DirectusToken, error) {
 	out := new(DirectusToken)
 	err := c.cc.Invoke(ctx, "/robots.robots/GetDirectusToken", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *robotsClient) GetMyDirectusToken(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*DirectusToken, error) {
+	out := new(DirectusToken)
+	err := c.cc.Invoke(ctx, "/robots.robots/GetMyDirectusToken", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -128,6 +138,7 @@ type RobotsServer interface {
 	GetGraph(context.Context, *emptypb.Empty) (*groups.Groups, error)
 	Get(context.Context, *Robot) (*Robot, error)
 	GetDirectusToken(context.Context, *Robot) (*DirectusToken, error)
+	GetMyDirectusToken(context.Context, *emptypb.Empty) (*DirectusToken, error)
 	GetByGroup(context.Context, *groups.Group) (*Robots, error)
 	GetSAFile(context.Context, *Robot) (*SaFile, error)
 	Add(context.Context, *Robot) (*Robot, error)
@@ -151,6 +162,9 @@ func (UnimplementedRobotsServer) Get(context.Context, *Robot) (*Robot, error) {
 }
 func (UnimplementedRobotsServer) GetDirectusToken(context.Context, *Robot) (*DirectusToken, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetDirectusToken not implemented")
+}
+func (UnimplementedRobotsServer) GetMyDirectusToken(context.Context, *emptypb.Empty) (*DirectusToken, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMyDirectusToken not implemented")
 }
 func (UnimplementedRobotsServer) GetByGroup(context.Context, *groups.Group) (*Robots, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByGroup not implemented")
@@ -248,6 +262,24 @@ func _Robots_GetDirectusToken_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RobotsServer).GetDirectusToken(ctx, req.(*Robot))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Robots_GetMyDirectusToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RobotsServer).GetMyDirectusToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/robots.robots/GetMyDirectusToken",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RobotsServer).GetMyDirectusToken(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -364,6 +396,10 @@ var Robots_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetDirectusToken",
 			Handler:    _Robots_GetDirectusToken_Handler,
+		},
+		{
+			MethodName: "GetMyDirectusToken",
+			Handler:    _Robots_GetMyDirectusToken_Handler,
 		},
 		{
 			MethodName: "GetByGroup",

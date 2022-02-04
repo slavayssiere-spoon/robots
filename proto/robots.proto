@@ -139,6 +139,12 @@ service robots {
 		};
 	}
 
+	rpc GetMyDirectusToken (google.protobuf.Empty) returns (DirectusToken) {
+		option (google.api.http) = {
+			get: "/v1/robots/directustoken"
+		};
+	}
+
 	rpc GetByGroup (groups.Group) returns (Robots) {
 		option (google.api.http) = {
 			get: "/v1/robots/group/{id}"

@@ -36,6 +36,11 @@ class robotsStub(object):
                 request_serializer=robots__pb2.Robot.SerializeToString,
                 response_deserializer=robots__pb2.DirectusToken.FromString,
                 )
+        self.GetMyDirectusToken = channel.unary_unary(
+                '/robots.robots/GetMyDirectusToken',
+                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                response_deserializer=robots__pb2.DirectusToken.FromString,
+                )
         self.GetByGroup = channel.unary_unary(
                 '/robots.robots/GetByGroup',
                 request_serializer=groups__pb2.Group.SerializeToString,
@@ -85,6 +90,12 @@ class robotsServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetDirectusToken(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetMyDirectusToken(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -141,6 +152,11 @@ def add_robotsServicer_to_server(servicer, server):
             'GetDirectusToken': grpc.unary_unary_rpc_method_handler(
                     servicer.GetDirectusToken,
                     request_deserializer=robots__pb2.Robot.FromString,
+                    response_serializer=robots__pb2.DirectusToken.SerializeToString,
+            ),
+            'GetMyDirectusToken': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetMyDirectusToken,
+                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                     response_serializer=robots__pb2.DirectusToken.SerializeToString,
             ),
             'GetByGroup': grpc.unary_unary_rpc_method_handler(
@@ -242,6 +258,23 @@ class robots(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/robots.robots/GetDirectusToken',
             robots__pb2.Robot.SerializeToString,
+            robots__pb2.DirectusToken.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetMyDirectusToken(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robots.robots/GetMyDirectusToken',
+            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             robots__pb2.DirectusToken.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
