@@ -105,6 +105,12 @@ message SaFile {
 	string content = 1;
 }
 
+message RobotMessage {
+	uint64 id = 1;
+	string message = 2;
+	bool send = 3;
+}
+
 message DirectusToken {
 	// @inject_tag: json:"access_token"
 	string access_token = 1;
@@ -160,6 +166,13 @@ service robots {
 	rpc Add (Robot) returns (Robot) {
 		option (google.api.http) = {
 			post: "/v1/robots"
+			body: "*"
+		};
+	}
+
+	rpc SendToRobot (RobotMessage) returns (RobotMessage) {
+		option (google.api.http) = {
+			post: "/v1/robots/message/{id}"
 			body: "*"
 		};
 	}

@@ -28,6 +28,7 @@ type RobotsClient interface {
 	GetByGroup(ctx context.Context, in *groups.Group, opts ...grpc.CallOption) (*Robots, error)
 	GetSAFile(ctx context.Context, in *Robot, opts ...grpc.CallOption) (*SaFile, error)
 	Add(ctx context.Context, in *Robot, opts ...grpc.CallOption) (*Robot, error)
+	SendToRobot(ctx context.Context, in *RobotMessage, opts ...grpc.CallOption) (*RobotMessage, error)
 	Update(ctx context.Context, in *Robot, opts ...grpc.CallOption) (*Robot, error)
 	UpdateMacAddress(ctx context.Context, in *Robot, opts ...grpc.CallOption) (*Robot, error)
 }
@@ -112,6 +113,15 @@ func (c *robotsClient) Add(ctx context.Context, in *Robot, opts ...grpc.CallOpti
 	return out, nil
 }
 
+func (c *robotsClient) SendToRobot(ctx context.Context, in *RobotMessage, opts ...grpc.CallOption) (*RobotMessage, error) {
+	out := new(RobotMessage)
+	err := c.cc.Invoke(ctx, "/robots.robots/SendToRobot", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *robotsClient) Update(ctx context.Context, in *Robot, opts ...grpc.CallOption) (*Robot, error) {
 	out := new(Robot)
 	err := c.cc.Invoke(ctx, "/robots.robots/Update", in, out, opts...)
@@ -142,6 +152,7 @@ type RobotsServer interface {
 	GetByGroup(context.Context, *groups.Group) (*Robots, error)
 	GetSAFile(context.Context, *Robot) (*SaFile, error)
 	Add(context.Context, *Robot) (*Robot, error)
+	SendToRobot(context.Context, *RobotMessage) (*RobotMessage, error)
 	Update(context.Context, *Robot) (*Robot, error)
 	UpdateMacAddress(context.Context, *Robot) (*Robot, error)
 	mustEmbedUnimplementedRobotsServer()
@@ -174,6 +185,9 @@ func (UnimplementedRobotsServer) GetSAFile(context.Context, *Robot) (*SaFile, er
 }
 func (UnimplementedRobotsServer) Add(context.Context, *Robot) (*Robot, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Add not implemented")
+}
+func (UnimplementedRobotsServer) SendToRobot(context.Context, *RobotMessage) (*RobotMessage, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendToRobot not implemented")
 }
 func (UnimplementedRobotsServer) Update(context.Context, *Robot) (*Robot, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
@@ -338,6 +352,24 @@ func _Robots_Add_Handler(srv interface{}, ctx context.Context, dec func(interfac
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Robots_SendToRobot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RobotMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RobotsServer).SendToRobot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/robots.robots/SendToRobot",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RobotsServer).SendToRobot(ctx, req.(*RobotMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Robots_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Robot)
 	if err := dec(in); err != nil {
@@ -412,6 +444,10 @@ var Robots_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Add",
 			Handler:    _Robots_Add_Handler,
+		},
+		{
+			MethodName: "SendToRobot",
+			Handler:    _Robots_SendToRobot_Handler,
 		},
 		{
 			MethodName: "Update",
