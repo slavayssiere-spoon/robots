@@ -109,6 +109,7 @@ message RobotMessage {
 	uint64 id = 1;
 	string message = 2;
 	bool send = 3;
+	string email = 4;
 }
 
 message DirectusToken {
@@ -173,6 +174,13 @@ service robots {
 	rpc SendToRobot (RobotMessage) returns (RobotMessage) {
 		option (google.api.http) = {
 			post: "/v1/robots/message/{id}"
+			body: "*"
+		};
+	}
+
+	rpc SendToRobotWithEmail (RobotMessage) returns (RobotMessage) {
+		option (google.api.http) = {
+			post: "/v1/robots/message/email/{email}"
 			body: "*"
 		};
 	}
